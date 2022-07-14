@@ -19,14 +19,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],
     "dependencyTreeRoots": [
       {
-        "name": "ts-gen",
+        "name": "ts-kin",
         "reference": "workspace:."
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["ts-gen", ["workspace:."]]
+      ["ts-kin", ["workspace:."]]
     ],
     "fallbackPool": [
     ],
@@ -39,11 +39,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
-      ["ts-gen", [
+      ["ts-kin", [
         ["workspace:.", {
           "packageLocation": "./",
           "packageDependencies": [
-            ["ts-gen", "workspace:."]
+            ["ts-kin", "workspace:."]
           ],
           "linkType": "SOFT",
         }]

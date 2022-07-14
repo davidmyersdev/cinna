@@ -1,2 +1,3 @@
-# ts-gen
-A flexible project generator built with TypeScript
+# ts-kin
+
+A flexible template-based project generator built with TypeScript

@@ -4,8 +4,8 @@
 __metadata:
   version: 5
 
-"ts-gen@workspace:.":
+"ts-kin@workspace:.":
   version: 0.0.0-use.local
-  resolution: "ts-gen@workspace:."
+  resolution: "ts-kin@workspace:."
   languageName: unknown
   linkType: soft
