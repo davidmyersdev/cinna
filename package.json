@@ -1,8 +1,57 @@
 {
-  "name": "ts-kin",
+  "name": "kin-cli",
+  "description": "A flexible template-based project generator built with TypeScript",
   "version": "0.0.1",
-  "packageManager": "yarn@3.1.1",
+  "author": "David Myers <david@voracious.dev>",
+  "bugs": {
+    "url": "https://github.com/voraciousdev/kin-cli/issues"
+  },
+  "funding": "https://github.com/sponsors/voraciousdev",
+  "homepage": "https://github.com/voraciousdev/kin-cli",
+  "keywords": [
+    "boilerplate",
+    "cli",
+    "generator",
+    "interactive",
+    "scaffold",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voraciousdev/kin-cli.git"
+  },
+  "dependencies": {
+    "cac": "^6.7.12",
+    "inquirer": "^9.0.1",
+    "liquidjs": "^9.39.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.4",
+    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.12",
+    "chalk": "^5.0.1",
+    "esbuild": "^0.14.49",
+    "esbuild-plugin-run": "^0.3.0",
+    "execa": "^6.1.0",
+    "rimraf": "^3.0.2",
+    "string-argv": "^0.3.1",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "packageManager": "yarn@3.2.1",
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "dev": "yarn tsc --esmoduleinterop --target esnext --moduleresolution node plugin.ts && yarn build",
+    "build": "rimraf ./dist && yarn node build.js"
+  },
+  "type": "module",
+  "dependenciesMeta": {
+    "ts-node@10.9.1": {
+      "unplugged": true
+    }
   }
 }
