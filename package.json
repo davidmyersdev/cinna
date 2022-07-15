@@ -1,7 +1,7 @@
 {
   "name": "kin-cli",
   "description": "A flexible template-based project generator built with TypeScript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/kin-cli/issues"
