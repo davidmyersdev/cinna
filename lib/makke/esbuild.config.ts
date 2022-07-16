@@ -1,23 +1,31 @@
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp'
 import { build } from 'esbuild'
 import { readFileSync } from 'fs'
-import { repl } from './plugin.js'
 
 // Importing json files does not work with pnp loader right now.
 // https://github.com/yarnpkg/berry/issues/4245
 // import { dependencies } from './package.json' assert { type: 'json' }
-const { dependencies } = readFileSync('./package.json')
+// @ts-ignore
+const { dependencies } = JSON.parse(readFileSync('./package.json').toString())
+
+const banners = [
+  // https://github.com/evanw/esbuild/issues/1921
+  'import { createRequire } from "module"',
+  'const require = createRequire(import.meta.url)',
+]
 
 await build({
+  banner: {
+    js: banners.join('\n') + '\n',
+  },
   bundle: true,
   entryPoints: ['./src/index.ts'],
-  external: dependencies,
+  external: Object.keys(dependencies).concat('esbuild'),
   format: 'esm',
+  outfile: './dist/makke.js',
   platform: 'node',
   plugins: [
     pnpPlugin(),
-    repl(),
   ],
-  tsconfig: './tsconfig.json',
-  outfile: './dist/kin.js',
+  target: 'node16',
 })

@@ -1,19 +1,19 @@
 {
-  "name": "kin-cli",
-  "description": "A flexible template-based project generator built with TypeScript",
-  "version": "0.0.2",
+  "name": "makke",
+  "description": "An esbuild-based dev environment for Node CLI tools",
+  "version": "0.0.1",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/kin-cli/issues"
   },
   "funding": "https://github.com/sponsors/voraciousdev",
-  "homepage": "https://github.com/voraciousdev/kin-cli",
+  "homepage": "https://github.com/voraciousdev/kin-cli/tree/main/lib/makke",
   "keywords": [
-    "boilerplate",
     "cli",
-    "generator",
+    "cli-dev",
+    "dev-env",
+    "esbuild",
     "interactive",
-    "scaffold",
     "typescript"
   ],
   "license": "MIT",
@@ -22,17 +22,15 @@
     "url": "git+https://github.com/voraciousdev/kin-cli.git"
   },
   "dependencies": {
-    "cac": "^6.7.12",
-    "inquirer": "^9.0.1",
-    "liquidjs": "^9.39.1"
+    "cac": "^6.7.12"
   },
   "devDependencies": {
     "@types/node": "^18.0.4",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.12",
     "chalk": "^5.0.1",
+    "deepmerge-ts": "^4.2.1",
     "esbuild": "^0.14.49",
     "execa": "^6.1.0",
-    "makke": "workspace:*",
     "rimraf": "^3.0.2",
     "string-argv": "^0.3.1",
     "typescript": "^4.7.4"
@@ -45,12 +43,9 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "yarn tsc --esmoduleinterop --target esnext --moduleresolution node plugin.ts && yarn build",
-    "build": "rimraf ./dist && yarn node build.js"
+    "dev": "yarn build && yarn node ./dist/makke.js dev",
+    "build": "yarn build:config && rimraf ./dist && yarn node ./esbuild.config.js",
+    "build:config": "cat esbuild.config.ts | esbuild --loader=ts > ./esbuild.config.js"
   },
-  "type": "module",
-  "workspaces": [
-    ".",
-    "./lib/makke"
-  ]
+  "type": "module"
 }

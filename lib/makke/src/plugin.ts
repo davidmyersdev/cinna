@@ -5,14 +5,15 @@ import { join } from 'path'
 import readline from 'readline'
 import { parseArgsStringToArgv } from 'string-argv'
 import type { Plugin } from 'esbuild'
+import type { Interface } from 'readline'
 
 interface ReplOptions {
   baseDir: string
+  reader: Interface
 }
 
 const completions = [
   'exit',
-  'kin.js',
   'quit',
 ]
 
@@ -22,8 +23,11 @@ const completer = (line: string) => {
   return [hits.length ? hits : completions, line]
 }
 
-const defaultOptions = {
-  baseDir: process.cwd(),
+const defaultOptions = () => {
+  return {
+    baseDir: process.cwd(),
+    reader: readline.createInterface(process.stdin, process.stdout, completer),
+  }
 }
 
 const isExit = (command: string) => {
@@ -31,13 +35,13 @@ const isExit = (command: string) => {
 }
 
 const say = {
-  info: (...messages) => {
+  info: (...messages: string[]) => {
     console.log(...messages.map(message => chalk.blueBright(message)))
   },
-  warn: (...messages) => {
+  warn: (...messages: string[]) => {
     console.warn(...messages.map(message => chalk.yellow(message)))
   },
-  error: (...messages) => {
+  error: (...messages: string[]) => {
     console.error(...messages.map(message => chalk.red(message)))
   },
 }
@@ -49,25 +53,27 @@ const executor = (command: string, args: string[] = [], options: ReplOptions) =>
     process.exit()
   }
 
-  const file = join(options.baseDir, command)
+  if (command) {
+    const file = join(options.baseDir, command)
 
-  if (existsSync(file)) {
-    const childProcess = execaNode(file, args, { stdio: 'inherit' })
+    if (existsSync(file)) {
+      const childProcess = execaNode(file, args, { stdio: 'inherit' })
 
-    childProcess.on('exit', () => {
+      childProcess.on('exit', () => {
+        prompt(options)
+      })
+    } else {
+      say.warn('command not found')
+
       prompt(options)
-    })
+    }
   } else {
-    say.warn('command not found')
-
     prompt(options)
   }
 }
 
-const reader = readline.createInterface(process.stdin, process.stdout, completer)
-
 const prompt = (options: ReplOptions) => {
-  reader.question('> ', (answer: string) => {
+  options.reader.question('> ', (answer: string) => {
     const [command, ...args] = parseArgsStringToArgv(answer)
 
     executor(command, args, options)
@@ -75,21 +81,33 @@ const prompt = (options: ReplOptions) => {
 }
 
 export const repl = (userOptions: Partial<ReplOptions> = {}): Plugin => {
+  let buildCount = 0
   const options = {
-    ...defaultOptions,
+    ...defaultOptions(),
     ...userOptions,
   }
 
   return {
     name: 'esbuild:repl',
-    async setup({ onEnd }) {
-      onEnd(async () => {
+    async setup({ onEnd, onStart }) {
+      onStart(() => {
+        process.stdin.pause()
+
+        if (buildCount > 0) {
+          say.info('')
+          say.warn('Files changed. Rebuilding...')
+        }
+      })
+
+      onEnd(() => {
         say.info('Your CLI REPL is ready. Enter a command below.')
 
         process.stdin.setEncoding('utf8')
         process.stdin.resume()
 
         prompt(options)
+
+        buildCount++
       })
     },
   }
