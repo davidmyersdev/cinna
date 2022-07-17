@@ -21,6 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/voraciousdev/kin-cli.git"
   },
+  "bin": "./kin.js",
   "dependencies": {
     "cac": "^6.7.12",
     "inquirer": "^9.0.1",
@@ -40,13 +41,17 @@
   "engines": {
     "node": ">=16"
   },
+  "files": [
+    "dist/**/*",
+    "src/**/*"
+  ],
   "packageManager": "yarn@3.2.1",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "dev": "yarn tsc --esmoduleinterop --target esnext --moduleresolution node plugin.ts && yarn build",
-    "build": "rimraf ./dist && yarn node build.js"
+    "dev": "yarn build && yarn makke dev",
+    "build": "rimraf ./dist && yarn workspace makke build"
   },
   "type": "module",
   "workspaces": [

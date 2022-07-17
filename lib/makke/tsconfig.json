@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
+    "alwaysStrict": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext"],
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,

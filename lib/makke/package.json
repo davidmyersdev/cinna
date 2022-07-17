@@ -21,6 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/voraciousdev/kin-cli.git"
   },
+  "bin": "./makke.js",
   "dependencies": {
     "cac": "^6.7.12"
   },
@@ -38,14 +39,22 @@
   "engines": {
     "node": ">=16"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/makke.js",
+      "types": "./dist/makke.d.ts"
+    }
+  },
+  "module": "./dist/makke.js",
   "packageManager": "yarn@3.2.1",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "dev": "yarn build && yarn node ./dist/makke.js dev",
-    "build": "yarn build:config && rimraf ./dist && yarn node ./esbuild.config.js",
+    "dev": "yarn build && yarn makke dev",
+    "build": "yarn build:config && rimraf ./dist && yarn node ./esbuild.config.js && cp ./src/types.d.ts ./dist/makke.d.ts",
     "build:config": "cat esbuild.config.ts | esbuild --loader=ts > ./esbuild.config.js"
   },
-  "type": "module"
+  "type": "module",
+  "types": "./dist/makke.d.ts"
 }
