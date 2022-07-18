@@ -1,7 +1,7 @@
 {
   "name": "makke",
   "description": "An esbuild-based dev environment for Node CLI tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/kin-cli/issues"
