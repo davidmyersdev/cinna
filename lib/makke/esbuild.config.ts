@@ -1,3 +1,4 @@
+// Todo: Replace this file with makke.
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp'
 import { build } from 'esbuild'
 import { readFileSync } from 'fs'
@@ -6,7 +7,7 @@ import { readFileSync } from 'fs'
 // https://github.com/yarnpkg/berry/issues/4245
 // import { dependencies } from './package.json' assert { type: 'json' }
 // @ts-ignore
-const { dependencies } = JSON.parse(readFileSync('./package.json').toString())
+const { dependencies = {} } = JSON.parse(readFileSync('./package.json').toString())
 
 const banners = [
   // https://github.com/evanw/esbuild/issues/1921
@@ -20,7 +21,7 @@ await build({
   },
   bundle: true,
   entryPoints: ['./src/index.ts'],
-  external: Object.keys(dependencies).concat('esbuild'),
+  external: Object.keys(dependencies),
   format: 'esm',
   outfile: './dist/makke.js',
   platform: 'node',

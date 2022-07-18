@@ -6,21 +6,21 @@ import type { MakkeConfig } from './types'
 
 const CONFIG_FILE_NAME = 'makke.config.ts'
 
-// https://github.com/evanw/esbuild/issues/1921
-const bannerLines = [
-  'import { createRequire as makkeCreateRequire } from "module"',
-  '',
-  'if (typeof require === "undefined") {',
-  '  var require = makkeCreateRequire(import.meta.url)',
-  '}',
-]
+const banner = `
+  // https://github.com/evanw/esbuild/issues/1921
+  import { createRequire as makkeCreateRequire } from "module"
+
+  if (typeof require === "undefined") {
+    var require = makkeCreateRequire(import.meta.url)
+  }
+`
 
 // Todo: Watch config file for changes and rebuild when necessary.
 const bundleConfig = async (file: string) => {
   const result = await build({
     absWorkingDir: process.cwd(),
     banner: {
-      js: bannerLines.join('\n'),
+      js: banner,
     },
     bundle: true,
     entryPoints: [file],
