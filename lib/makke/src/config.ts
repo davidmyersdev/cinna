@@ -49,7 +49,7 @@ const readConfig = async (file: string): Promise<MakkeConfig> => {
   try {
     return (await import(tmpFile)).default as MakkeConfig
   } finally {
-    // unlinkSync(tmpFile)
+    unlinkSync(tmpFile)
   }
 }
 
