@@ -1,7 +1,7 @@
 {
   "name": "makke",
   "description": "An esbuild-based dev environment for Node CLI tools",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/kin-cli/issues"
@@ -53,7 +53,8 @@
   "scripts": {
     "dev": "yarn build && yarn makke dev",
     "build": "yarn build:config && rimraf ./dist && yarn node ./esbuild.config.js && cp ./src/types.d.ts ./dist/makke.d.ts",
-    "build:config": "cat esbuild.config.ts | esbuild --loader=ts > ./esbuild.config.js"
+    "build:config": "cat esbuild.config.ts | esbuild --loader=ts > ./esbuild.config.js",
+    "prepack": "yarn build"
   },
   "type": "module",
   "types": "./dist/makke.d.ts"
