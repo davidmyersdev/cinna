@@ -131,7 +131,7 @@ __metadata:
     execa: ^6.1.0
     inquirer: ^9.0.1
     liquidjs: ^9.39.1
-    makke: ^0.1.4
+    makke: ^0.2.0
     rimraf: ^3.0.2
     string-argv: ^0.3.1
     typescript: ^4.7.4
@@ -613,9 +613,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"makke@npm:^0.1.4":
-  version: 0.1.4
-  resolution: "makke@npm:0.1.4"
+"makke@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "makke@npm:0.2.0"
   dependencies:
     cac: ^6.7.12
     chalk: ^5.0.1
@@ -624,7 +624,7 @@ __metadata:
     string-argv: ^0.3.1
   bin:
     makke: ./makke.js
-  checksum: 055a23da2091d55da2cd741e7b0b3a5cf42f8d29cdf2b207ea7c29a2926bc7e5ee0644d3e8d9440e8e74c3f97d6b6ad8597c906be998e0c7e2be2d0879f13c69
+  checksum: d761b082cc2e15587e42933e91874bd61a5225e29b186a3b1fcd2ecaaf1e936550a932f514d1b31f6af40b99b4599f739654059e9e93088c9d0762c8cdddb5e9
   languageName: node
   linkType: hard
 

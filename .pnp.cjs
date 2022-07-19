@@ -41,7 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["execa", "npm:6.1.0"],\
             ["inquirer", "npm:9.0.1"],\
             ["liquidjs", "npm:9.39.1"],\
-            ["makke", "npm:0.1.4"],\
+            ["makke", "npm:0.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -209,7 +209,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["execa", "npm:6.1.0"],\
             ["inquirer", "npm:9.0.1"],\
             ["liquidjs", "npm:9.39.1"],\
-            ["makke", "npm:0.1.4"],\
+            ["makke", "npm:0.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -733,10 +733,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["makke", [\
-        ["npm:0.1.4", {\
-          "packageLocation": "./.yarn/cache/makke-npm-0.1.4-854b4a10e3-055a23da20.zip/node_modules/makke/",\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/makke-npm-0.2.0-bb49bc375f-d761b082cc.zip/node_modules/makke/",\
           "packageDependencies": [\
-            ["makke", "npm:0.1.4"],\
+            ["makke", "npm:0.2.0"],\
             ["cac", "npm:6.7.12"],\
             ["chalk", "npm:5.0.1"],\
             ["esbuild", "npm:0.14.49"],\
