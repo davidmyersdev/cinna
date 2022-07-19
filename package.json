@@ -54,7 +54,8 @@
   "scripts": {
     "dev": "rimraf ./dist && makke dev",
     "build": "rimraf ./dist && makke build",
-    "makke:build": "yarn workspace makke build"
+    "makke:build": "yarn workspace makke build",
+    "makke:publish": "yarn workspace makke npm publish"
   },
   "type": "module",
   "workspaces": [
