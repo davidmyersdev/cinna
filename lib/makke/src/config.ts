@@ -15,7 +15,6 @@ const banner = `
   }
 `
 
-// Todo: Watch config file for changes and rebuild when necessary.
 const bundleConfig = async (file: string) => {
   const result = await build({
     absWorkingDir: resolveRoot(),
@@ -34,6 +33,7 @@ const bundleConfig = async (file: string) => {
       pnpPlugin(),
     ],
     sourcemap: 'inline',
+    watch: false, // Todo: watch for changes and rebuild (with a plugin).
     write: false,
   })
 

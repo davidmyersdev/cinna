@@ -96,6 +96,7 @@ const prompt = (config: MakkeConfig, options: ReplOptions) => {
 
 export const repl = (config: MakkeConfig, replConfig: Partial<ReplOptions> = {}): Plugin => {
   let buildCount = 0
+  let startTime = Date.now()
   const options = {
     ...defaultOptions(config),
     ...replConfig,
@@ -110,11 +111,13 @@ export const repl = (config: MakkeConfig, replConfig: Partial<ReplOptions> = {})
         if (buildCount > 0) {
           say.info('')
           say.warn('Files changed. Rebuilding...')
+
+          startTime = Date.now()
         }
       })
 
       onEnd(() => {
-        say.info('Your CLI REPL is ready. Enter a command below.')
+        say.info(`Ready in ${Date.now() - startTime} ms. Enter a command below.`)
 
         process.stdin.setEncoding('utf8')
         process.stdin.resume()
