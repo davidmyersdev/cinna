@@ -1,10 +1,10 @@
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp'
+import { deepmerge } from 'deepmerge-ts'
 import { build } from 'esbuild'
-import { existsSync, unlinkSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
+import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'fs'
+import { CONFIG_FILE_NAME } from './constants'
+import { resolveCache, resolveConfig, resolveRoot } from './fs'
 import type { MakkeConfig } from './types'
-
-const CONFIG_FILE_NAME = 'makke.config.ts'
 
 const banner = `
   // https://github.com/evanw/esbuild/issues/1921
@@ -18,7 +18,7 @@ const banner = `
 // Todo: Watch config file for changes and rebuild when necessary.
 const bundleConfig = async (file: string) => {
   const result = await build({
-    absWorkingDir: process.cwd(),
+    absWorkingDir: resolveRoot(),
     banner: {
       js: banner,
     },
@@ -40,21 +40,33 @@ const bundleConfig = async (file: string) => {
   return result.outputFiles[0].text
 }
 
-const readConfig = async (file: string): Promise<MakkeConfig> => {
-  const rawConfig = await bundleConfig(file)
-  const tmpFile = `${file}.mjs`
-
-  writeFileSync(tmpFile, rawConfig)
-
-  try {
-    return (await import(tmpFile)).default as MakkeConfig
-  } finally {
-    unlinkSync(tmpFile)
+const defaultConfig = (): MakkeConfig => {
+  return {
+    aliases: [],
+    esbuild: {
+      bundle: true,
+      format: 'esm',
+      platform: 'node',
+    }
   }
 }
 
-const resolveConfig = (): string => {
-  return resolve(process.cwd(), CONFIG_FILE_NAME)
+const readConfig = async (file: string): Promise<MakkeConfig> => {
+  const rawConfig = await bundleConfig(file)
+  const tmpFile = resolveCache('makke.config.mjs')
+
+  if (!existsSync(resolveCache())) {
+    mkdirSync(resolveCache())
+  }
+
+  writeFileSync(resolveCache('.gitignore'), '*')
+  writeFileSync(tmpFile, rawConfig)
+
+  try {
+    return deepmerge(defaultConfig(), (await import(tmpFile)).default)
+  } finally {
+    unlinkSync(tmpFile)
+  }
 }
 
 export const config = async (): Promise<MakkeConfig> => {

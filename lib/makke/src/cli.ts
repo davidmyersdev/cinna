@@ -4,15 +4,11 @@ import { config } from './config'
 import { version } from '../package.json' assert { type: 'json' }
 
 const build = async (..._args: any[]) => {
-  const buildOptions = (await config()).esbuild || {}
-
-  return buildProd(buildOptions)
+  return buildProd(await config())
 }
 
 const dev = async (..._args: any[]) => {
-  const buildOptions = (await config()).esbuild || {}
-
-  return buildDev(buildOptions)
+  return buildDev(await config())
 }
 
 export const cli = (): void => {

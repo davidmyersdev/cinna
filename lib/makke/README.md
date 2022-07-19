@@ -26,6 +26,10 @@ import { defineConfig } from 'makke'
 import { dependencies } from './package.json' assert { type: 'json' }
 
 export default defineConfig({
+  // Alias your commands to make them easier to run.
+  aliases: [
+    'makke',
+  ],
   esbuild: {
     entryPoints: ['./src/index.ts'],
     external: Object.keys(dependencies),
@@ -48,6 +52,14 @@ Add the following scripts to your `package.json` file.
 }
 ```
 
-## Using the dev environment
+### Ignore the `.makke` folder
+
+Make sure you add `.makke` to your `.gitignore`. This folder is used to cache files in development.
+
+### Launch the REPL and start developing
 
 Running `makke dev` starts a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for you to run your custom commands. When your source files change, `makke` instantly rebuilds your project with the speed of `esbuild`.
+
+### Build for production
+
+When you are happy with the results of your project, run `makke build` to creation a production build.

@@ -4,33 +4,42 @@ import { existsSync } from 'fs'
 import { join } from 'path'
 import readline from 'readline'
 import { parseArgsStringToArgv } from 'string-argv'
+import { resolveCache, resolveRoot } from './fs'
 import type { Plugin } from 'esbuild'
 import type { Interface } from 'readline'
+import { MakkeConfig } from './types'
 
 interface ReplOptions {
   baseDir: string
   reader: Interface
 }
 
-const completions = [
+const defaultCompletions = [
   'exit',
   'quit',
 ]
 
-const completer = (line: string) => {
+const completer = (config: MakkeConfig, line: string) => {
+  const completions = defaultCompletions.concat(config.aliases)
   const hits = completions.filter(completion => completion.startsWith(line))
 
   return [hits.length ? hits : completions, line]
 }
 
-const defaultOptions = () => {
+const defaultOptions = (config: MakkeConfig) => {
   return {
-    baseDir: process.cwd(),
-    reader: readline.createInterface(process.stdin, process.stdout, completer),
+    baseDir: resolveRoot(),
+    reader: readline.createInterface(process.stdin, process.stdout, (line: string) => {
+      return completer(config, line)
+    }),
   }
 }
 
-const isExit = (command: string) => {
+const isAlias = (config: MakkeConfig, command: string): boolean => {
+  return config.aliases.includes(command)
+}
+
+const isExit = (command: string): boolean => {
   return command === 'exit' || command === 'quit'
 }
 
@@ -46,7 +55,7 @@ const say = {
   },
 }
 
-const executor = (command: string, args: string[] = [], options: ReplOptions) => {
+const executor = (config: MakkeConfig, command: string, args: string[] = [], options: ReplOptions) => {
   if (isExit(command)) {
     say.info('Exiting CLI REPL session...')
 
@@ -54,37 +63,42 @@ const executor = (command: string, args: string[] = [], options: ReplOptions) =>
   }
 
   if (command) {
-    const file = join(options.baseDir, command)
+    if (isAlias(config, command)) {
+      // If the command is an alias, point to the dev build.
+      var file = resolveCache('dev.mjs')
+    } else {
+      var file = join(options.baseDir, command)
+    }
 
     if (existsSync(file)) {
       const childProcess = execaNode(file, args, { stdio: 'inherit' })
 
       childProcess.on('exit', () => {
-        prompt(options)
+        prompt(config, options)
       })
     } else {
       say.warn('command not found')
 
-      prompt(options)
+      prompt(config, options)
     }
   } else {
-    prompt(options)
+    prompt(config, options)
   }
 }
 
-const prompt = (options: ReplOptions) => {
+const prompt = (config: MakkeConfig, options: ReplOptions) => {
   options.reader.question('> ', (answer: string) => {
     const [command, ...args] = parseArgsStringToArgv(answer)
 
-    executor(command, args, options)
+    executor(config, command, args, options)
   })
 }
 
-export const repl = (userOptions: Partial<ReplOptions> = {}): Plugin => {
+export const repl = (config: MakkeConfig, replConfig: Partial<ReplOptions> = {}): Plugin => {
   let buildCount = 0
   const options = {
-    ...defaultOptions(),
-    ...userOptions,
+    ...defaultOptions(config),
+    ...replConfig,
   }
 
   return {
@@ -105,7 +119,7 @@ export const repl = (userOptions: Partial<ReplOptions> = {}): Plugin => {
         process.stdin.setEncoding('utf8')
         process.stdin.resume()
 
-        prompt(options)
+        prompt(config, options)
 
         buildCount++
       })

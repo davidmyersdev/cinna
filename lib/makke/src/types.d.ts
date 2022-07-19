@@ -1,6 +1,7 @@
 import type { BuildOptions } from 'esbuild'
 
 export interface MakkeConfig {
+  aliases: string[]
   esbuild: BuildOptions
 }
 
