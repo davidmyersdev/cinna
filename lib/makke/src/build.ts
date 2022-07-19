@@ -8,14 +8,22 @@ const defaultConfig = (): BuildOptions => {
     bundle: true,
     format: 'esm',
     platform: 'node',
+  }
+}
+
+const devConfig = (): BuildOptions => {
+  return {
     plugins: [
       repl(),
     ],
-    // Todo: Make watch optional to allow makke to be used as the actual build tool.
     watch: true,
   }
 }
 
 export const build = async (config: BuildOptions = {}) => {
   return esbuild(deepmerge(defaultConfig(), config))
+}
+
+export const buildDev = async (config: BuildOptions = {}) => {
+  return esbuild(deepmerge(defaultConfig(), config, devConfig()))
 }

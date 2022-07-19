@@ -1,6 +1,6 @@
 # makke
 
-A module bundler and dev environment for building Node CLI tools
+A module bundler and REPL for your Node CLI tools
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ Add the following scripts to your `package.json` file.
 {
   "scripts": {
     "dev": "makke dev",
-    "build": "makke build" // coming soon
+    "build": "makke build"
   }
 }
 ```
