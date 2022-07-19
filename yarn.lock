@@ -119,6 +119,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cinna@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "cinna@workspace:."
+  dependencies:
+    "@types/node": ^18.0.4
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.12
+    cac: ^6.7.12
+    chalk: ^5.0.1
+    esbuild: ^0.14.49
+    execa: ^6.1.0
+    inquirer: ^9.0.1
+    liquidjs: ^9.39.1
+    makke: "workspace:^"
+    rimraf: ^3.0.2
+    string-argv: ^0.3.1
+    typescript: ^4.7.4
+  bin:
+    kin: ./kin.js
+  languageName: unknown
+  linkType: soft
+
 "cli-cursor@npm:^4.0.0":
   version: 4.0.0
   resolution: "cli-cursor@npm:4.0.0"
@@ -571,27 +592,6 @@ __metadata:
   checksum: 26bf6c5480dda5161c820c5b5c751ae1e766c587b1f951ea3fcfc973bafb7831ae5b54a31a69bd670220e42e99ec154475025a468eae58ea262f813fdc8d1c62
   languageName: node
   linkType: hard
-
-"kin-cli@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "kin-cli@workspace:."
-  dependencies:
-    "@types/node": ^18.0.4
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.12
-    cac: ^6.7.12
-    chalk: ^5.0.1
-    esbuild: ^0.14.49
-    execa: ^6.1.0
-    inquirer: ^9.0.1
-    liquidjs: ^9.39.1
-    makke: "workspace:^"
-    rimraf: ^3.0.2
-    string-argv: ^0.3.1
-    typescript: ^4.7.4
-  bin:
-    kin: ./kin.js
-  languageName: unknown
-  linkType: soft
 
 "liquidjs@npm:^9.39.1":
   version: 9.39.1

@@ -17,7 +17,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "kin-cli",\
+        "name": "cinna",\
         "reference": "workspace:."\
       },\
       {\
@@ -28,7 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["kin-cli", ["workspace:."]],\
+      ["cinna", ["workspace:."]],\
       ["makke", ["workspace:lib/makke"]]\
     ],\
     "fallbackPool": [\
@@ -199,6 +199,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chardet", "npm:0.7.0"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["cinna", [\
+        ["workspace:.", {\
+          "packageLocation": "./",\
+          "packageDependencies": [\
+            ["cinna", "workspace:."],\
+            ["@types/node", "npm:18.0.4"],\
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12"],\
+            ["cac", "npm:6.7.12"],\
+            ["chalk", "npm:5.0.1"],\
+            ["esbuild", "npm:0.14.49"],\
+            ["execa", "npm:6.1.0"],\
+            ["inquirer", "npm:9.0.1"],\
+            ["liquidjs", "npm:9.39.1"],\
+            ["makke", "workspace:lib/makke"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["string-argv", "npm:0.3.1"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["cli-cursor", [\
@@ -694,27 +715,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["isexe", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["kin-cli", [\
-        ["workspace:.", {\
-          "packageLocation": "./",\
-          "packageDependencies": [\
-            ["kin-cli", "workspace:."],\
-            ["@types/node", "npm:18.0.4"],\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12"],\
-            ["cac", "npm:6.7.12"],\
-            ["chalk", "npm:5.0.1"],\
-            ["esbuild", "npm:0.14.49"],\
-            ["execa", "npm:6.1.0"],\
-            ["inquirer", "npm:9.0.1"],\
-            ["liquidjs", "npm:9.39.1"],\
-            ["makke", "workspace:lib/makke"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["string-argv", "npm:0.3.1"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
-          ],\
-          "linkType": "SOFT"\
         }]\
       ]],\
       ["liquidjs", [\

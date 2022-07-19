@@ -1,13 +1,13 @@
 {
-  "name": "kin-cli",
-  "description": "A flexible template-based project generator built with TypeScript",
-  "version": "0.0.2",
+  "name": "cinna",
+  "description": "A flexible template-based project generator built with TypeScript. Pairs well with bun.",
+  "version": "0.0.3",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
-    "url": "https://github.com/voraciousdev/kin-cli/issues"
+    "url": "https://github.com/voraciousdev/cinna/issues"
   },
   "funding": "https://github.com/sponsors/voraciousdev",
-  "homepage": "https://github.com/voraciousdev/kin-cli",
+  "homepage": "https://github.com/voraciousdev/cinna",
   "keywords": [
     "boilerplate",
     "cli",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voraciousdev/kin-cli.git"
+    "url": "git+https://github.com/voraciousdev/cinna.git"
   },
   "bin": {
     "kin": "./kin.js"
