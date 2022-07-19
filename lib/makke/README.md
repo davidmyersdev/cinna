@@ -2,6 +2,8 @@
 
 A module bundler and REPL for your Node CLI tools
 
+![`makke dev`](screenshot.png)
+
 ## Getting Started
 
 With your preferred package manager, add `makke` as a dev dependency.
