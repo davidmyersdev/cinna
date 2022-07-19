@@ -131,7 +131,7 @@ __metadata:
     execa: ^6.1.0
     inquirer: ^9.0.1
     liquidjs: ^9.39.1
-    makke: "workspace:^"
+    makke: ^0.1.4
     rimraf: ^3.0.2
     string-argv: ^0.3.1
     typescript: ^4.7.4
@@ -185,13 +185,6 @@ __metadata:
     shebang-command: ^2.0.0
     which: ^2.0.1
   checksum: 671cc7c7288c3a8406f3c69a3ae2fc85555c04169e9d611def9a675635472614f1c0ed0ef80955d5b6d4e724f6ced67f0ad1bb006c2ea643488fcfef994d7f52
-  languageName: node
-  linkType: hard
-
-"deepmerge-ts@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "deepmerge-ts@npm:4.2.1"
-  checksum: 5fb2f4a6b0f2a637992ba226cb89c28b081575489f1adfcd6789d95bdfb5b8236c8c5aafc02e645fd04f16101bf7c3f3e7c58e523579c635649eb36cb113a3bb
   languageName: node
   linkType: hard
 
@@ -620,24 +613,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"makke@workspace:^, makke@workspace:lib/makke":
-  version: 0.0.0-use.local
-  resolution: "makke@workspace:lib/makke"
+"makke@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "makke@npm:0.1.4"
   dependencies:
-    "@types/node": ^18.0.4
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.12
     cac: ^6.7.12
     chalk: ^5.0.1
-    deepmerge-ts: ^4.2.1
     esbuild: ^0.14.49
     execa: ^6.1.0
-    rimraf: ^3.0.2
     string-argv: ^0.3.1
-    typescript: ^4.7.4
   bin:
     makke: ./makke.js
-  languageName: unknown
-  linkType: soft
+  checksum: 055a23da2091d55da2cd741e7b0b3a5cf42f8d29cdf2b207ea7c29a2926bc7e5ee0644d3e8d9440e8e74c3f97d6b6ad8597c906be998e0c7e2be2d0879f13c69
+  languageName: node
+  linkType: hard
 
 "merge-stream@npm:^2.0.0":
   version: 2.0.0

@@ -19,17 +19,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "cinna",\
         "reference": "workspace:."\
-      },\
-      {\
-        "name": "makke",\
-        "reference": "workspace:lib/makke"\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["cinna", ["workspace:."]],\
-      ["makke", ["workspace:lib/makke"]]\
+      ["cinna", ["workspace:."]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -39,14 +34,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@types/node", "npm:18.0.4"],\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12"],\
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:27682f1d12d7bcc5f9aa285c70a9fb38788da7a4bda570fbabc3df37a6541fb7658080d26332028fdbe51909303156e3b119f1251161342ea575bac412d29643#npm:3.0.0-rc.12"],\
             ["cac", "npm:6.7.12"],\
             ["chalk", "npm:5.0.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
             ["inquirer", "npm:9.0.1"],\
             ["liquidjs", "npm:9.39.1"],\
-            ["makke", "workspace:lib/makke"],\
+            ["makke", "npm:0.1.4"],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -71,10 +66,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12", {\
-          "packageLocation": "./.yarn/__virtual__/@yarnpkg-esbuild-plugin-pnp-virtual-eaf3226486/0/cache/@yarnpkg-esbuild-plugin-pnp-npm-3.0.0-rc.12-1c5e245c9b-cc3a5349d6.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",\
+        ["virtual:27682f1d12d7bcc5f9aa285c70a9fb38788da7a4bda570fbabc3df37a6541fb7658080d26332028fdbe51909303156e3b119f1251161342ea575bac412d29643#npm:3.0.0-rc.12", {\
+          "packageLocation": "./.yarn/__virtual__/@yarnpkg-esbuild-plugin-pnp-virtual-ab0500a163/0/cache/@yarnpkg-esbuild-plugin-pnp-npm-3.0.0-rc.12-1c5e245c9b-cc3a5349d6.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",\
           "packageDependencies": [\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12"],\
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:27682f1d12d7bcc5f9aa285c70a9fb38788da7a4bda570fbabc3df37a6541fb7658080d26332028fdbe51909303156e3b119f1251161342ea575bac412d29643#npm:3.0.0-rc.12"],\
             ["@types/esbuild", null],\
             ["esbuild", "npm:0.14.49"],\
             ["tslib", "npm:1.14.1"]\
@@ -207,14 +202,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["cinna", "workspace:."],\
             ["@types/node", "npm:18.0.4"],\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12"],\
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:27682f1d12d7bcc5f9aa285c70a9fb38788da7a4bda570fbabc3df37a6541fb7658080d26332028fdbe51909303156e3b119f1251161342ea575bac412d29643#npm:3.0.0-rc.12"],\
             ["cac", "npm:6.7.12"],\
             ["chalk", "npm:5.0.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
             ["inquirer", "npm:9.0.1"],\
             ["liquidjs", "npm:9.39.1"],\
-            ["makke", "workspace:lib/makke"],\
+            ["makke", "npm:0.1.4"],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -276,15 +271,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["path-key", "npm:3.1.1"],\
             ["shebang-command", "npm:2.0.0"],\
             ["which", "npm:2.0.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["deepmerge-ts", [\
-        ["npm:4.2.1", {\
-          "packageLocation": "./.yarn/cache/deepmerge-ts-npm-4.2.1-a4cefb4b37-5fb2f4a6b0.zip/node_modules/deepmerge-ts/",\
-          "packageDependencies": [\
-            ["deepmerge-ts", "npm:4.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -747,22 +733,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["makke", [\
-        ["workspace:lib/makke", {\
-          "packageLocation": "./lib/makke/",\
+        ["npm:0.1.4", {\
+          "packageLocation": "./.yarn/cache/makke-npm-0.1.4-854b4a10e3-055a23da20.zip/node_modules/makke/",\
           "packageDependencies": [\
-            ["makke", "workspace:lib/makke"],\
-            ["@types/node", "npm:18.0.4"],\
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:26c763c25c6f772f635b70f383cea9ef80a59f1c3a89f0fa4cc207089cbc28bea3203d55559d22ad7153afb4aa94660d94928d1480109c9f4fe2aa70fa31fd49#npm:3.0.0-rc.12"],\
+            ["makke", "npm:0.1.4"],\
             ["cac", "npm:6.7.12"],\
             ["chalk", "npm:5.0.1"],\
-            ["deepmerge-ts", "npm:4.2.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["string-argv", "npm:0.3.1"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+            ["string-argv", "npm:0.3.1"]\
           ],\
-          "linkType": "SOFT"\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["merge-stream", [\
