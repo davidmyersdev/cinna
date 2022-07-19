@@ -1,7 +1,7 @@
 {
   "name": "makke",
   "description": "A module bundler and REPL for your Node CLI tools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/kin-cli/issues"
